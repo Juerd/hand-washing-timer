@@ -9,65 +9,11 @@ int hue = 0;
 CRGB leds[numleds];
 
 const bool digits[] = {
-    X,X,X,
-    X,_,X,
-    X,_,X,
-    X,_,X,
-    X,X,X,
-
-    _,X,_,
-    _,X,_,
-    _,X,_,
-    _,X,_,
-    _,X,_,
-
-    X,X,X,
-    _,_,X,
-    X,X,X,
-    X,_,_,
-    X,X,X,
-
-    X,X,X,
-    _,_,X,
-    X,X,X,
-    _,_,X,
-    X,X,X,
-
-    X,_,X,
-    X,_,X,
-    X,X,X,
-    _,_,X,
-    _,_,X,
-
-    X,X,X,
-    X,_,_,
-    X,X,X,
-    _,_,X,
-    X,X,X,
-
-    _,X,X,
-    X,_,_,
-    X,X,X,
-    X,_,X,
-    X,X,X,
-
-    X,X,X,
-    _,_,X,
-    _,_,X,
-    _,_,X,
-    _,_,X,
-
-    X,X,X,
-    X,_,X,
-    X,X,X,
-    X,_,X,
-    X,X,X,
-
-    X,X,X,
-    X,_,X,
-    X,X,X,
-    _,_,X,
-    X,X,_
+  X,X,X,  _,X,_,  X,X,X,  X,X,X,  X,_,X,  X,X,X,  _,X,X,  X,X,X,  X,X,X,  X,X,X,
+  X,_,X,  _,X,_,  _,_,X,  _,_,X,  X,_,X,  X,_,_,  X,_,_,  _,_,X,  X,_,X,  X,_,X,
+  X,_,X,  _,X,_,  X,X,X,  X,X,X,  X,X,X,  X,X,X,  X,X,X,  _,_,X,  X,X,X,  X,X,X,
+  X,_,X,  _,X,_,  X,_,_,  _,_,X,  _,_,X,  _,_,X,  X,_,X,  _,_,X,  X,_,X,  _,_,X,
+  X,X,X,  _,X,_,  X,X,X,  X,X,X,  _,_,X,  X,X,X,  X,X,X,  _,_,X,  X,X,X,  X,X,_
 };
 
 void setup() {
@@ -98,7 +44,7 @@ void loop() {
         if (first) leds[y*5] = color;  // digit 1 or nothing
 
         for (int x = 0; x < 3; x++) {
-            if (digits[second * 5*3 + y*3 + x]) leds[y*5 + first + 1 + x] = color;
+            if (digits[y*30 + second*3 + x]) leds[y*5 + first + 1 + x] = color;
         }
     }
     FastLED.show();
