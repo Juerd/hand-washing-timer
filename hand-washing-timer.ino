@@ -92,11 +92,13 @@ void loop() {
     int second = n % 10;
     CRGB color = CHSV(hue, 255, 255);
 
+    for (int i = 0; i < numleds; i++) leds[i] = CRGB::Black;
+
     for (int y = 0; y < 5; y++) {
-        leds[y*5] = first ? color : CRGB::Black;  // digit 1 or nothing
+        if (first) leds[y*5] = color;  // digit 1 or nothing
 
         for (int x = 0; x < 3; x++) {
-            leds[y*5 + 2+x] = digits[second * 5*3 + y*3 + x] ? color : CRGB::Black;
+            if (digits[second * 5*3 + y*3 + x]) leds[y*5 + first + 1 + x] = color;
         }
     }
     FastLED.show();
